@@ -1,15 +1,16 @@
 __Notes/ Changes from the original repository:__  
-- Great use case for the replication of the work of Wang, et.al. (2017) -- as also indicated in the paper as reference #58. There are quite similar code examples on GitHub. Just check paperswithcode of Wang, et.al.  
-- An easy method to download the dataset is not provided. An updated list of the dataset programmatically and as .tsv files in dataloader folder.  
-- Setup is changed to conda.
-  
+- Great use case for the replication of the work of [Wang, et.al. (2017)](https://arxiv.org/pdf/1704.06904.pdf) -- as also indicated in the paper as reference #58. There are quite similar code examples on GitHub. Just check [paperswithcode](https://paperswithcode.com/paper/residual-attention-network-for-image) of Wang, et.al.  
+- An easy method to download the dataset is not provided. An updated list of the dataset programmatically and as .tsv files in [data utils](./data/utils) folder.  
+- Setup is changed to conda due to the lack of explanation in the core setup requirement (e.g., python version). Different python versions results in conflicts.  
+- Review is added from supplementary information of Nature into the [supplementary_information](./supplementary_information/) folder.   
+
 # CAXTON: The Collaborative Autonomous Extrusion Network
 
 _Accompanying code to the publication "Generalisable 3D Printing Error Detection and Correction via Multi-Head Neural Networks"_
 
 ![media/network.jpg](media/network.jpg)
 
-## Setup
+## :gear Setup
 
 This repository allows you to easily train a multi-head residual attention neural network to classify the state of the four most important printing parameters: flow rate, lateral speed, Z offset, and hotend temperature from a single input image.
 
@@ -21,7 +22,24 @@ source env/bin/activate
 pip install -r requirements.txt
 ```
 
-## Usage
+The following setup is specifically for the [target hardware](https://github.com/bankh/GPU_Compute#31-hardware).
+
+- Download and install Miniconda.  
+```
+$ curl -O https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
+$ chmod +x Miniconda3-latest-Linux-x86_64.sh
+```
+- Create and activate virtual environment.
+```
+$ conda create --name pytorch180 python=3.6
+$ conda activate pytorch180
+```
+- Install the requirements.
+```
+$ pip install -r requirements.txt
+```
+
+## :runner Usage
 
 Inside the `src` directory are two sub-directories for our `data` and `model`. We use Pytorch-Lightning (v1.1.4) as a wrapper for both the dataset and datamodule classes and for our model.
 
