@@ -1,5 +1,5 @@
 __Notes/ Changes from the original repository:__  
-- Great use case for the replication of the work of [Wang, et.al. (2017)](https://arxiv.org/pdf/1704.06904.pdf) -- as also indicated in the paper as reference #58. There are quite similar code examples on GitHub. Just check [paperswithcode](https://paperswithcode.com/paper/residual-attention-network-for-image) of Wang, et.al.  
+- Great use case for the work of [Wang, et.al. (2017)](https://arxiv.org/pdf/1704.06904.pdf) -- as also indicated in the paper as reference #58. There are quite similar code examples on GitHub. Just check [paperswithcode](https://paperswithcode.com/paper/residual-attention-network-for-image) of Wang, et.al.  
 - An easy method to download the dataset is not provided. An updated list of the dataset programmatically and as .tsv files in [data utils](./data/utils) folder.  
 - Setup is changed to conda due to the lack of explanation in the core setup requirement (e.g., python version). Different python versions results in conflicts.  
 - Review is added from supplementary information of Nature into the [supplementary_information](./supplementary_information/) folder.   
@@ -14,7 +14,7 @@ _Accompanying code to the publication "Generalisable 3D Printing Error Detection
 
 This repository allows you to easily train a multi-head residual attention neural network to classify the state of the four most important printing parameters: flow rate, lateral speed, Z offset, and hotend temperature from a single input image.
 
-First create a Python 3 virtual environment and install the requirements - this should only take a couple of minutes. We used PyTorch (v1.7.1), Torchvision (v0.8.2), and CUDA (v11.3) in this work. See the complete list of requirements in `requirements.txt`. 
+First create a Python 3 virtual environment and install the requirements - this should only take a couple of minutes. We used PyTorch (v1.7.1), Torchvision (v0.8.2), and CUDA (v11.3) in this work. See the complete list of requirements in `requirements_ori.txt`. 
 
 ```
 virtualenv -p python3 env
@@ -22,7 +22,7 @@ source env/bin/activate
 pip install -r requirements.txt
 ```
 
-The following setup is specifically for the [target hardware](https://github.com/bankh/GPU_Compute#31-hardware).
+The following setup is specifically for the [target hardware](https://github.com/bankh/GPU_Compute#31-hardware).Based on the hardware that one might have the setup might need to change.  
 
 - Download and install Miniconda.  
 ```
@@ -34,7 +34,7 @@ $ chmod +x Miniconda3-latest-Linux-x86_64.sh
 $ conda create --name pytorch180 python=3.6
 $ conda activate pytorch180
 ```
-- Install the requirements.
+- Install the requirements (Changed from the original one).
 ```
 $ pip install -r requirements.txt
 ```

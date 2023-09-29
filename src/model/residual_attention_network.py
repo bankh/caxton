@@ -6,7 +6,6 @@ from .attention_module import (
     AttentionModule_stage3,
 )
 
-
 class ResidualAttentionModel_56(nn.Module):
     # for input size 224 x 224
     def __init__(self, retrieve_layers=False, retrieve_masks=False):

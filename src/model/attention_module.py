@@ -13,36 +13,22 @@ class AttentionModule_pre(nn.Module):
             ResidualBlock(in_channels, out_channels),
             ResidualBlock(in_channels, out_channels),
         )
-
         self.mpool1 = nn.MaxPool2d(kernel_size=3, stride=2, padding=1)
-
         self.residual1_blocks = ResidualBlock(in_channels, out_channels)
-
         self.skip1_connection_residual_block = ResidualBlock(in_channels, out_channels)
-
         self.mpool2 = nn.MaxPool2d(kernel_size=3, stride=2, padding=1)
-
         self.residual2_blocks = ResidualBlock(in_channels, out_channels)
-
         self.skip2_connection_residual_block = ResidualBlock(in_channels, out_channels)
-
         self.mpool3 = nn.MaxPool2d(kernel_size=3, stride=2, padding=1)
-
         self.residual3_blocks = nn.Sequential(
             ResidualBlock(in_channels, out_channels),
             ResidualBlock(in_channels, out_channels),
         )
-
         self.interpolation3 = nn.UpsamplingBilinear2d(size=size3)
-
         self.residual4_blocks = ResidualBlock(in_channels, out_channels)
-
         self.interpolation2 = nn.UpsamplingBilinear2d(size=size2)
-
         self.residual5_blocks = ResidualBlock(in_channels, out_channels)
-
         self.interpolation1 = nn.UpsamplingBilinear2d(size=size1)
-
         self.residual6_blocks = nn.Sequential(
             nn.BatchNorm2d(out_channels),
             nn.ReLU(inplace=True),
@@ -52,9 +38,7 @@ class AttentionModule_pre(nn.Module):
             nn.Conv2d(out_channels, out_channels, kernel_size=1, stride=1, bias=False),
             nn.Sigmoid(),
         )
-
         self.last_blocks = ResidualBlock(in_channels, out_channels)
-
         self.retrieve_mask = retrieve_mask
 
     def forward(self, x):
