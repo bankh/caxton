@@ -1,3 +1,8 @@
+__Notes/ Changes from the original repository:__  
+- Great use case for the replication of the work of Wang, et.al. (2017) -- as also indicated in the paper as reference #58. There are quite similar code examples on GitHub. Just check paperswithcode of Wang, et.al.  
+- An easy method to download the dataset is not provided. An updated list of the dataset programmatically and as .tsv files in dataloader folder.  
+- Setup is changed to conda.
+  
 # CAXTON: The Collaborative Autonomous Extrusion Network
 
 _Accompanying code to the publication "Generalisable 3D Printing Error Detection and Correction via Multi-Head Neural Networks"_
