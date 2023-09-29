@@ -1,7 +1,7 @@
 __Notes/ Changes from the original repository:__  
 - Great use case for the work of [Wang, et.al. (2017)](https://arxiv.org/pdf/1704.06904.pdf) -- as also indicated in the paper as reference #58. There are quite similar code examples on GitHub. Just check [paperswithcode](https://paperswithcode.com/paper/residual-attention-network-for-image) of Wang, et.al.  
 - An easy method to download the dataset is not provided. An updated list of the dataset programmatically and as .tsv files in [data utils](./data/utils) folder.  
-- Setup is changed to conda due to the lack of explanation in the core setup requirement (e.g., python version). Different python versions results in conflicts.  
+- Setup is changed to conda due to the lack of explanation in the core setup requirement (e.g., python version). Different python versions result in conflicts.  
 - Review is added from supplementary information of Nature into the [supplementary_information](./supplementary_information/) folder.   
 
 # CAXTON: The Collaborative Autonomous Extrusion Network
