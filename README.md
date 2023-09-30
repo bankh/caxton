@@ -32,7 +32,7 @@ $ bash Miniconda3-latest-Linux-x86_64.sh
 ```
 - Create and activate the virtual environment.
 ```
-$ conda create --name pytorch1120 python=3.6
+$ conda create --name pytorch1120 python=3.6 -y
 $ conda activate pytorch1120
 ```
 - Install the requirements (Changed from the original one).
