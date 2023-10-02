@@ -92,8 +92,8 @@ threadpoolctl==3.1.0
 tifffile==2022.10.10
 tomli==2.0.1
 toolz==0.12.0
-torch==1.12.1+git7548e2f
-torchvision==0.13.1+f15c117
+#torch==1.12.1+git7548e2f
+#torchvision==0.13.1+f15c117
 tqdm==4.63.0
 typed-ast==1.4.3
 types-dataclasses==0.6.6

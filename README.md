@@ -24,21 +24,42 @@ pip install -r requirements.txt
 
 The following setup is specifically for the [target hardware -- (a) in the 3.1 Hardware](https://github.com/bankh/GPU_Compute#31-hardware). Based on the hardware that one might have the setup might need to change.  
 
-- Download and install Miniconda.  
+- Pull and run Docker container (see [Docker instructions for ROCm)[https://github.com/bankh/GPU_Compute/blob/main/Docker_images/AMD/readMe.md]).  
+```
+$ docker pull rocm/pytorch:rocm5.4_ubuntu20.04_py3.8_pytorch_1.12.1
+$ docker run -it --name caxton_1 --cap-add=SYS_PTRACE --security-opt seccomp=unconfined --device=/dev/kfd --device=/dev/dri --group-add $(getent group video | cut -d':' -f 3) --ipc=host -v /mnt/data_drive:/mnt/data_drive -v /mnt/data:/mnt/data -v /home/ubuntu:/mnt/ubuntu -p 0.0.0.0:6007:6007 -e DISPLAY=$DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix:ro rocm/pytorch:rocm5.4_ubuntu20.04_py3.8_pytorch_1.12.1
+
+```
+
+- Inside the docker container, download and install Miniconda.  
 ```
 $ curl -O https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
 $ chmod +x Miniconda3-latest-Linux-x86_64.sh
 $ bash Miniconda3-latest-Linux-x86_64.sh
 ```
-- Create and activate the virtual environment.
+
+- Create and activate the virtual environment.  
 ```
 $ conda create --name pytorch1120 python=3.6 -y
 $ conda activate pytorch1120
 ```
-- Install the requirements (Changed from the original one).
+
+- Install the requirements (changed from the original one without torch and torchvision).  
+
 ```
 $ pip install -r requirements.txt
 ```
+
+- Training proceeds smoothly with 6 GPUs. However, utilizing a 7th GPU could potentially trip a 20A breaker. If everything operates as expected, the following output will appear on the terminal:  
+ 
+<table style="width:100%;">
+    <tr>
+        <td style="width:50%;"><img src="./media/training_in_progress_Caxton.PNG" style="width:100%;"></td>
+        <td style="width:50%;"><img src="./media/rocm_smi.PNG" style="width:100%;"></td>
+    </tr>
+</table>
+
+
 
 ## 🏃 Usage
 

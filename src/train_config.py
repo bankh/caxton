@@ -5,6 +5,9 @@ import torch
 from pytorch_lightning import seed_everything
 from torchvision import transforms
 
+# Set the environment variable DATA_DIR
+os.environ['DATA_DIR'] = '/mnt/data_drive/Data-AutoPrint'
+
 DATE = datetime.now().strftime("%d%m%Y")
 dataset_switch = 1
 DATA_DIR = os.environ.get("DATA_DIR")
@@ -36,11 +39,12 @@ elif dataset_switch == 2:
 
 INITIAL_LR = 0.001
 
-BATCH_SIZE = 32
+BATCH_SIZE = 72 # 32 results in the consumption of 25% of vRAM.
 MAX_EPOCHS = 50
 
 NUM_NODES = 1
-NUM_GPUS = 2
+NUM_GPUS = torch.cuda.device_count()-1
+# NUM_GPUS = 1
 ACCELERATOR = "ddp"
 
 def set_seed(seed):
