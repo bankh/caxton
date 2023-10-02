@@ -5,11 +5,8 @@ import torch
 from pytorch_lightning import seed_everything
 from torchvision import transforms
 
-
 DATE = datetime.now().strftime("%d%m%Y")
-
 dataset_switch = 1
-
 DATA_DIR = os.environ.get("DATA_DIR")
 
 if dataset_switch == 0:
@@ -46,14 +43,12 @@ NUM_NODES = 1
 NUM_GPUS = 2
 ACCELERATOR = "ddp"
 
-
 def set_seed(seed):
     torch.backends.cudnn.deterministic = False
     torch.backends.cudnn.benchmark = True
     seed_everything(seed)
     torch.manual_seed(seed)
     np.random.seed(seed)
-
 
 def make_dirs(path):
     try:

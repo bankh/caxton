@@ -8,7 +8,6 @@ from data.dataset import ParametersDataset
 
 ImageFile.LOAD_TRUNCATED_IMAGES = True
 
-
 class ParametersDataModule(pl.LightningDataModule):
     def __init__(
         self,
@@ -88,19 +87,14 @@ class ParametersDataModule(pl.LightningDataModule):
             hotend=self.use_hotend,
             per_img_normalisation=self.per_img_normalisation,
         )
-        train_size, val_size = int(0.7 * len(self.dataset)), int(
-            0.2 * len(self.dataset)
-        )
+        train_size, val_size = int(0.7 * len(self.dataset)), \
+                               int(0.2 * len(self.dataset))
         test_size = len(self.dataset) - train_size - val_size
 
         if save:
-            (
-                self.train_dataset,
-                self.val_dataset,
-                self.test_dataset,
-            ) = torch.utils.data.random_split(
-                self.dataset, [train_size, val_size, test_size]
-            )
+            self.train_dataset,
+            self.val_dataset, 
+            self.test_dataset = torch.utils.data.random_split(self.dataset, [train_size, val_size, test_size])
             try:
                 os.makedirs("data/{}/".format(self.dataset_name))
             except:
