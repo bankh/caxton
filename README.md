@@ -27,11 +27,19 @@ pip install -r requirements.txt
 
 The following setup is specifically for the [target hardware -- (a) in the 3.1 Hardware](https://github.com/bankh/GPU_Compute#31-hardware). Based on the hardware that one might have the setup might need to change.  
 
-- Pull and run Docker container (see [Docker instructions for ROCm)[https://github.com/bankh/GPU_Compute/blob/main/Docker_images/AMD/readMe.md]).  
+- Pull and run Docker container (see [Docker instructions for ROCm](https://github.com/bankh/GPU_Compute/blob/main/Docker_images/AMD/readMe.md)).  
 ```
 $ docker pull rocm/pytorch:rocm5.4_ubuntu20.04_py3.8_pytorch_1.12.1
-$ docker run -it --name caxton_1 --cap-add=SYS_PTRACE --security-opt seccomp=unconfined --device=/dev/kfd --device=/dev/dri --group-add $(getent group video | cut -d':' -f 3) --ipc=host -v /mnt/data_drive:/mnt/data_drive -v /mnt/data:/mnt/data -v /home/ubuntu:/mnt/ubuntu -p 0.0.0.0:6007:6007 -e DISPLAY=$DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix:ro rocm/pytorch:rocm5.4_ubuntu20.04_py3.8_pytorch_1.12.1
-
+$ docker run -it --name caxton_1 \
+                 --cap-add=SYS_PTRACE \
+                 --security-opt seccomp=unconfined \
+                 --device=/dev/kfd --device=/dev/dri \
+                 --group-add $(getent group video | cut -d':' -f 3) \
+                 --ipc=host \
+                 -v /mnt/data_drive:/mnt/data_drive -v /mnt/data:/mnt/data -v /home/ubuntu:/mnt/ubuntu \
+                 -p 0.0.0.0:6007:6007 \
+                 -e DISPLAY=$DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix:ro \
+                 rocm/pytorch:rocm5.4_ubuntu20.04_py3.8_pytorch_1.12.1
 ```
 
 - Inside the docker container, download and install Miniconda.  
