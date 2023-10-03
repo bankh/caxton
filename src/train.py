@@ -2,9 +2,10 @@ import os
 import argparse
 import pytorch_lightning as pl
 from pytorch_lightning import loggers as pl_loggers
-from pytorch_lightning.callbacks import ModelCheckpoint, EarlyStopping
+from pytorch_lightning.callbacks import ModelCheckpoint
 from data.data_module import ParametersDataModule
 from model.network_module import ParametersClassifier
+from utils.early_stopping import LoggingEarlyStopping
 
 from train_config import *
 
@@ -39,11 +40,13 @@ checkpoint_callback = ModelCheckpoint(
     save_top_k=3,
     mode="min",
 )
-early_stop_callback = EarlyStopping(
-   monitor='val_loss',
-   patience=3,
-   verbose=False,
-   mode='min'
+# Now replace the instantiation of EarlyStopping with LoggingEarlyStopping
+early_stop_callback = LoggingEarlyStopping(
+    logger=tb_logger,
+    monitor='val_loss',
+    patience=20,
+    verbose=True,
+    mode='min'
 )
 model = ParametersClassifier(num_classes=3,
                              lr=INITIAL_LR,
@@ -57,7 +60,6 @@ data = ParametersDataModule(batch_size=BATCH_SIZE,
                             mean=DATASET_MEAN,
                             std=DATASET_STD,
 )
-
 trainer = pl.Trainer(num_nodes=NUM_NODES,
                      gpus=NUM_GPUS,
                      accelerator='gpu',
@@ -68,5 +70,4 @@ trainer = pl.Trainer(num_nodes=NUM_NODES,
                      precision=16,
                      callbacks=[checkpoint_callback, early_stop_callback],
 )
-
 trainer.fit(model, data)
