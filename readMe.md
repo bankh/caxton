@@ -2,11 +2,14 @@ __Notes/ Changes from the original repository:__
 - Great use case for the work of [Wang, et.al. (2017)](https://arxiv.org/pdf/1704.06904.pdf) -- as also indicated in the paper as reference #58. There are quite similar code examples on GitHub. Just check [paperswithcode](https://paperswithcode.com/paper/residual-attention-network-for-image) of Wang, et.al.  
 - An easy method to download the dataset is not provided. An updated list of the dataset programmatically and as .tsv files in [data utils](./data/utils) folder.  
 - Setup is changed to conda due to the lack of explanation in the core setup requirement (e.g., python version). Different Python versions result in conflicts.  
-- Review is added from supplementary information of Nature into the [supplementary_information](./supplementary_information/) folder.   
+- Review is added from supplementary information of Nature into the [supplementary_information](./supplementary_information/) folder.  
+__To Dos:__  
+[ ] Check the algorithmic logic of correction (classification to process parameters). It seems to be an on/off-like approach (linearly mapped between threshold limits) and this approach will require additional tuning due to potential oscillations as pointed out in 'Online correction and parameter discovery pipeline' and Fig. 3-b as well.  
+[ ] Benchmarks with others. 😉  
 
 # CAXTON: The Collaborative Autonomous Extrusion Network
 
-_Accompanying code to the publication "Generalisable 3D Printing Error Detection and Correction via Multi-Head Neural Networks"_
+_Accompanying code to the publication "[Generalisable 3D Printing Error Detection and Correction via Multi-Head Neural Networks](https://www.nature.com/articles/s41467-022-31985-y)"_
 
 ![media/network.jpg](media/network.jpg)
 
@@ -24,11 +27,19 @@ pip install -r requirements.txt
 
 The following setup is specifically for the [target hardware -- (a) in the 3.1 Hardware](https://github.com/bankh/GPU_Compute#31-hardware). Based on the hardware that one might have the setup might need to change.  
 
-- Pull and run Docker container (see [Docker instructions for ROCm)[https://github.com/bankh/GPU_Compute/blob/main/Docker_images/AMD/readMe.md]).  
+- Pull and run Docker container (see [Docker instructions for ROCm](https://github.com/bankh/GPU_Compute/blob/main/Docker_images/AMD/readMe.md)).  
 ```
 $ docker pull rocm/pytorch:rocm5.4_ubuntu20.04_py3.8_pytorch_1.12.1
-$ docker run -it --name caxton_1 --cap-add=SYS_PTRACE --security-opt seccomp=unconfined --device=/dev/kfd --device=/dev/dri --group-add $(getent group video | cut -d':' -f 3) --ipc=host -v /mnt/data_drive:/mnt/data_drive -v /mnt/data:/mnt/data -v /home/ubuntu:/mnt/ubuntu -p 0.0.0.0:6007:6007 -e DISPLAY=$DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix:ro rocm/pytorch:rocm5.4_ubuntu20.04_py3.8_pytorch_1.12.1
-
+$ docker run -it --name caxton_1 \
+                 --cap-add=SYS_PTRACE \
+                 --security-opt seccomp=unconfined \
+                 --device=/dev/kfd --device=/dev/dri \
+                 --group-add $(getent group video | cut -d':' -f 3) \
+                 --ipc=host \
+                 -v /mnt/data_drive:/mnt/data_drive -v /mnt/data:/mnt/data -v /home/ubuntu:/mnt/ubuntu \
+                 -p 0.0.0.0:6007:6007 \
+                 -e DISPLAY=$DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix:ro \
+                 rocm/pytorch:rocm5.4_ubuntu20.04_py3.8_pytorch_1.12.1
 ```
 
 - Inside the docker container, download and install Miniconda.  
