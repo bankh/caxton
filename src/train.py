@@ -41,7 +41,7 @@ tb_logger = pl_loggers.TensorBoardLogger(logs_dir)
 dirpath="checkpoints/{}/{}/".format(DATE, seed)
 filename="MHResAttNet-{}-{}-".format(DATASET_NAME, DATE)+ "{epoch:02d}-{val_loss:.2f}-{val_acc:.2f}",
 # Checkpoint filename
-ckpt_filename="MHResAttNet-dataset_full-03102023-epoch=18-val_loss=4.10-val_acc=0.48.ckpt"
+ckpt_filename=""
 checkpoint_path = os.path.join(dirpath, ckpt_filename)
 checkpoint_callback = ModelCheckpoint(
     monitor="val_loss",
