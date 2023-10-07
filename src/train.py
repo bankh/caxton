@@ -26,7 +26,7 @@ parser.add_argument(
     "--checkpoint",
     default=True,
     type=bool,
-    help="On/ off the checkpoint",
+    help="On/ off the checkpoint and make sure to enter ckpt_filename inside the code",
 )
 args = parser.parse_args()
 seed = args.seed
@@ -34,14 +34,16 @@ set_seed(seed)
 
 logs_dir = "logs/logs-{}/{}/".format(DATE, seed)
 logs_dir_default = os.path.join(logs_dir, "default")
-make_dirs(logs_dir)
-make_dirs(logs_dir_default)
 
-tb_logger = pl_loggers.TensorBoardLogger(logs_dir)
-dirpath="checkpoints/{}/{}/".format(DATE, seed)
-filename="MHResAttNet-{}-{}-".format(DATASET_NAME, DATE)+ "{epoch:02d}-{val_loss:.2f}-{val_acc:.2f}",
-# Checkpoint filename
-ckpt_filename=""
+# Create directories
+os.makedirs(logs_dir, exist_ok=True)
+os.makedirs(logs_dir_default, exist_ok=True)
+
+tb_logger = pl_loggers.TensorBoardLogger(save_dir=logs_dir, name='lightning_logs')
+dirpath = "checkpoints/{}/{}/".format(DATE, seed)
+filename = "MHResAttNet-{}-{}-".format(DATASET_NAME, DATE) + "{epoch:02d}-{val_loss:.2f}-{val_acc:.2f}"
+ckpt_filename = ("/mnt/data_drive/AutoPrint/software/caxton/checkpoints/03102023/1234/"
+                 "MHResAttNet-dataset_full-03102023-epoch=18-val_loss=4.10-val_acc=0.48.ckpt")
 checkpoint_path = os.path.join(dirpath, ckpt_filename)
 checkpoint_callback = ModelCheckpoint(
     monitor="val_loss",
@@ -50,9 +52,9 @@ checkpoint_callback = ModelCheckpoint(
     save_top_k=3,
     mode="min",
 )
-# Now replace the instantiation of EarlyStopping with LoggingEarlyStopping
 early_stop_callback = LoggingEarlyStopping(logger=tb_logger,
-                                           monitor='val_loss',patience=20,
+                                           monitor='val_loss', 
+                                           patience=50,
                                            verbose=True,
                                            mode='min'
 )

@@ -39,7 +39,7 @@ elif dataset_switch == 2:
 
 INITIAL_LR = 0.001
 
-BATCH_SIZE = 128 # 32 results in the consumption of 25% of vRAM.
+BATCH_SIZE = 160 # 32 - 25% of vRAM. 160 - 95% of vRAM
 MAX_EPOCHS = 100
 
 NUM_NODES = 1
