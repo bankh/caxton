@@ -27,8 +27,8 @@ class ParametersClassifier(pl.LightningModule):
         super().__init__()
         self.lr = lr
         self.__dict__.update(locals())
-        self.attention_model = ResidualAttentionModel(
-            retrieve_layers=retrieve_layers, retrieve_masks=retrieve_masks
+        self.attention_model = ResidualAttentionModel(retrieve_layers=retrieve_layers, 
+                                                      retrieve_masks=retrieve_masks
         )
         num_ftrs = self.attention_model.fc.in_features
         self.attention_model.fc = nn.Identity()
@@ -78,8 +78,11 @@ class ParametersClassifier(pl.LightningModule):
 
     def configure_optimizers(self):
         optimizer = AdamW(self.parameters(), self.lr)
-        scheduler = ReduceLROnPlateau(
-            optimizer, mode="min", factor=0.1, patience=3, threshold=0.01
+        scheduler = ReduceLROnPlateau(optimizer, 
+                                      mode="min", 
+                                      factor=0.1, 
+                                      patience=3, 
+                                      threshold=0.01
         )
         return {
             "optimizer": optimizer,

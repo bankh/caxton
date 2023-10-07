@@ -10,8 +10,9 @@ def compute_mean_std(data_dir, target_csv, batch_size=100):
     all_stds = []
     
     filepath = os.path.join(target_csv)
+    csv_filename = os.path.basename(target_csv).split('.')[0]
     
-    with open('process_log.txt', 'a') as log_file:
+    with open(f'./dataset/process_{csv_filename}.txt', 'a') as log_file:
         log_file.write(f"Processing {filepath}...\n")
         print(f"Processing {filepath}...")
         
@@ -74,6 +75,6 @@ if __name__ == "__main__":
 
     # Hardcode the directories for debugging
     data_dir = "/mnt/data_drive/Data-AutoPrint"
-    csv_dir = "/mnt/data_drive/Data-AutoPrint/caxton_dataset/caxton_dataset_filtered.csv"
+    csv_dir = "/mnt/data_drive/Data-AutoPrint/caxton_dataset/caxton_dataset_filtered_cleaned.csv"
     
     compute_mean_std(data_dir, csv_dir)

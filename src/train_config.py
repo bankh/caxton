@@ -36,6 +36,12 @@ elif dataset_switch == 2:
     )
     DATASET_MEAN = [0.2925814, 0.2713622, 0.14409496]
     DATASET_STD = [0.0680447, 0.06964592, 0.0779964]
+elif dataset_switch == 3:
+    DATASET_NAME = "dataset_cleaned_filtered"
+    DATA_CSV = os.path.join(DATA_DIR,
+                            "caxton_dataset/caxton_dataset_filtered_cleaned.csv")
+    DATASET_MEAN = []
+    DATASET_STD = []
 
 INITIAL_LR = 0.001
 
