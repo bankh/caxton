@@ -1,8 +1,11 @@
 ### Notes/ Tools for Dataset
+
 - Some of the images are corrupt --not sure about the reasoning whether they were corrupt to begin with or downloading issue. Please make sure that you process them with the [compute_mean_std.py](./utils/compute_mean_std.py).  
 - There is a list of archive files and corresponding links in [caxton_dataset_links_files.tsv](./caxton_dataset_links_files.tsv)
 - There is also a file ([dataset_get.sh](./utils/dataset_get.sh)) in the utils that programmatically downloads all the image archives.  
 - [compute_mean_std](./utils/compute_mean_std.py) code will create a [process_log.txt](./process_log.txt) which shows corrupt files and store the mean and std values of the associated dataset (through the csv file).  
+- The "automated" data collection method involves adjusting the slicing parameters to known values for the printing process. In other words, the g-code is preset with values for poor, good, and high valued parameters. Data is then collected automatically. While the method is logical and straightforward when used with OctoPrint or anything equivalent, it doesn't appear to be autonomous in terms of data collection, as claimed in this repository.  
+- The states of low, good, and high are not explicitly documented anywhere. I assume that 'low' corresponds to 0, 'good' to 1, and 'high' to 2 in the _classification3.csv files.
 
 # CAXTON Data set
 
