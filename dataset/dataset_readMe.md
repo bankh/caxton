@@ -1,3 +1,8 @@
+### Notes/ Tools for Dataset
+- Some of the images are corrupt --not sure about the reasoning whether they were corrupt to begin with or downloading issue. Please make sure that you process them with the [compute_mean_std.py](./utils/compute_mean_std.py).  
+- There is a list of archive files and corresponding links in [caxton_dataset_links_files.tsv](./caxton_dataset_links_files.tsv)    
+- [compute_mean_std](./utils/compute_mean_std.py) code will create a [process_log.txt](./process_log.txt) which shows corrupt files and store the mean and std values of the associated dataset (through the csv file).  
+
 # CAXTON Data set
 
 The CAXTON data set is a large scale, optical, in-situ process monitoring data set for extrusion AM containing over 1 million sample images of material deposition from the printer nozzle. Each image is labelled with the printing process parameters being used as the image was captured. The data set is highly diverse comprising 192 2D and 3D geometries printed in a wide range of colours from PLA feedstock.
