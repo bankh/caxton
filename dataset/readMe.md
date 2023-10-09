@@ -6,7 +6,7 @@
 - [compute_mean_std](./utils/compute_mean_std.py) code will create a [process_log.txt](./process_log.txt) which shows corrupt files and store the mean and std values of the associated dataset (through the csv file).
 - [clean_csv.py](./utils/clean_csv.py) will take in the [process_log.txt](/process_log.txt) and remove the corresponding rows of corrupt files from the target csv file (e.g., caxton_dataset_filtered.csv) and restore in a file with `_cleaned` suffix.
 - The "automated" data collection method involves adjusting the slicing parameters to known values for the printing process. In other words, the g-code is preset with values for poor, good, and high valued parameters. Data is then collected automatically. While the method is logical and straightforward when used with OctoPrint or anything equivalent, it doesn't appear to be autonomous in terms of data collection, as claimed in this repository.  
-- The states of low, good, and high are not explicitly documented anywhere. I assume that 'low' corresponds to 0, 'good' to 1, and 'high' to 2 in the _classification3.csv files.
+- Correction: The states are documented in [readMe](../readMe.md#results-from-samples-in-the-repo) as 'low' corresponds to 0, 'good' to 1, and 'high' to 2 in the associated csv files.
 
 # CAXTON Data set
 

@@ -9,7 +9,7 @@ from torchvision import transforms
 os.environ['DATA_DIR'] = '/mnt/data_drive/Data-AutoPrint'
 
 DATE = datetime.now().strftime("%d%m%Y")
-dataset_switch = 1
+dataset_switch = 3
 DATA_DIR = os.environ.get("DATA_DIR")
 
 if dataset_switch == 0:
@@ -40,8 +40,8 @@ elif dataset_switch == 3:
     DATASET_NAME = "dataset_cleaned_filtered"
     DATA_CSV = os.path.join(DATA_DIR,
                             "caxton_dataset/caxton_dataset_filtered_cleaned.csv")
-    DATASET_MEAN = []
-    DATASET_STD = []
+    DATASET_MEAN = [0.4812980592250824, 0.4523872435092926, 0.3639879524707794]
+    DATASET_STD = [0.28480225801467896, 0.27984151244163513, 0.32483652234077454]
 
 INITIAL_LR = 0.001
 

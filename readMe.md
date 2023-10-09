@@ -51,8 +51,8 @@ $ bash Miniconda3-latest-Linux-x86_64.sh
 
 - Create and activate the virtual environment.  
 ```
-$ conda create --name pytorch1120 python=3.6 -y
-$ conda activate pytorch1120
+$ conda create --name caxton python=3.6 -y
+$ conda activate caxton
 ```
 
 - Install the requirements (changed from the original one without torch and torchvision).  
@@ -70,7 +70,13 @@ $ pip install -r requirements.txt
     </tr>
 </table>
 
-
+__Note:__ If one is using cloud, for NVidia version the default Caxton code is compatible for the following architectures 
+(mainly due to the use Cuda 11.3,11.4) `sm_37 sm_50 sm_60 sm_70 sm_75` and the following from AWS:  
+- Amazon EC2 P3 Instances: Up to 8 NVIDIA Tesla V100 GPUs, SM Type: sm_70 (Volta architecture)  
+- Amazon EC2 P4 Instances: Up to 8 NVIDIA Tesla A100 GPUs, SM Type: sm_80 (Ampere architecture)  
+- Amazon EC2 G3 Instances: Up to 4 NVIDIA Tesla M60 GPUs, SM Type: sm_52 (Maxwell architecture)  
+- Amazon EC2 G4 Instances: Up to 4 NVIDIA T4 GPUs, SM Type: sm_75 (Turing architecture)  
+- Amazon EC2 G5 Instances: Up to 8 NVIDIA A10G GPUs, SM Type: sm_80 (Ampere architecture)  
 
 ## 🏃 Usage
 
