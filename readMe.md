@@ -94,7 +94,15 @@ The network successfully self-learns the important features in the images during
 
 ![media/maps.jpg](media/maps.jpg)
 
-In the publication, we provide a three-step transfer learning process to achieve high accuracies in this problem. It should be noted that this step is not necessary and training can be completed in an end-to-end fashion with a single training regime.
+
+<table style="width:100%;">
+    <tr>
+        <td style="width:35%;">In the publication, we provide a three-step transfer learning process to achieve high accuracies in this problem. It should be noted that this step is not necessary and training can be completed in an end-to-end fashion with a single training regime.</br>
+The three-step learning process is depicted in Fig. 2(d) (as seen on the right) and in the result sections of the paper.</td>
+        <td style="width:65%;"><img src="https://github.com/bankh/caxton/assets/9688867/0036a3af-8995-4efe-9cb5-04986c2dec15" style="width:100%;"></td>
+    </tr>
+</table>
+
 
 ## Results from samples in the repo
 
