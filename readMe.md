@@ -45,7 +45,7 @@ $ docker run -it --name caxton_1 \
 
 - Inside the docker container, download and install Miniconda.  
 ```
-$ curl -O https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
+$ curl -O https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh ## https://repo.anaconda.com/miniconda/Miniconda3-4.7.12.1-Linux-x86_64.sh # Python 3.6
 $ chmod +x Miniconda3-latest-Linux-x86_64.sh
 $ bash Miniconda3-latest-Linux-x86_64.sh
 ```
@@ -101,7 +101,15 @@ The network successfully self-learns the important features in the images during
 
 ![media/maps.jpg](media/maps.jpg)
 
-In the publication, we provide a three-step transfer learning process to achieve high accuracies in this problem. It should be noted that this step is not necessary and training can be completed in an end-to-end fashion with a single training regime.
+
+<table style="width:100%;">
+    <tr>
+        <td style="width:35%;">In the publication, we provide a three-step transfer learning process to achieve high accuracies in this problem. It should be noted that this step is not necessary and training can be completed in an end-to-end fashion with a single training regime.</br>
+The three-step learning process is depicted in Fig. 2(d) (as seen on the right) and in the result sections of the paper.</td>
+        <td style="width:65%;"><img src="https://github.com/bankh/caxton/assets/9688867/0036a3af-8995-4efe-9cb5-04986c2dec15" style="width:100%;"></td>
+    </tr>
+</table>
+
 
 ## Results from samples in the repo
 
