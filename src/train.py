@@ -12,7 +12,11 @@ from train_config import *
 
 parser = argparse.ArgumentParser()
 parser.add_argument(
-    "-s", "--seed", default=1234, type=int, help="Set seed for training"
+    "-s", 
+    "--seed", 
+    default=12, 
+    type=int, 
+    help="Set seed for training"
 )
 parser.add_argument(
     "-e",
@@ -24,7 +28,7 @@ parser.add_argument(
 parser.add_argument(
     "-c",
     "--checkpoint",
-    default=True,
+    default=False,
     type=bool,
     help="On/ off the checkpoint and make sure to enter ckpt_filename inside the code",
 )
@@ -50,13 +54,13 @@ checkpoint_callback = ModelCheckpoint(
     dirpath=dirpath,
     filename=filename,
     save_top_k=3,
-    mode="min",
+    mode="max",
 )
 early_stop_callback = LoggingEarlyStopping(logger=tb_logger,
                                            monitor='val_loss', 
-                                           patience=50,
+                                           patience=100,
                                            verbose=True,
-                                           mode='min'
+                                           mode='max'
 )
 model = ParametersClassifier(num_classes=3,
                              lr=INITIAL_LR,
@@ -71,7 +75,8 @@ data = ParametersDataModule(batch_size=BATCH_SIZE,
                             std=DATASET_STD,
 )
 trainer = pl.Trainer(num_nodes=NUM_NODES,
-                     gpus=NUM_GPUS,
+                    #  gpus=NUM_GPUS,
+                     devices=NUM_GPUS,
                      accelerator='gpu',
                      strategy=ACCELERATOR,
                      max_epochs=args.epochs,

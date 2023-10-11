@@ -7,19 +7,23 @@ from torchvision import transforms
 
 # Set the environment variable DATA_DIR
 os.environ['DATA_DIR'] = '/mnt/data_drive/Data-AutoPrint'
+os.environ['CUDA_VISIBLE_DEVICES'] = '4'
 
 DATE = datetime.now().strftime("%d%m%Y")
-dataset_switch = 3
+dataset_switch = 0
 DATA_DIR = os.environ.get("DATA_DIR")
 
 if dataset_switch == 0:
     DATASET_NAME = "dataset_single_layer"
     DATA_CSV = os.path.join(
         DATA_DIR,
-        "caxton_dataset/caxton_dataset_filtered_single.csv",
+        "caxton_dataset/caxton_dataset_filtered_single_extracted.csv"
+        # "caxton_dataset/caxton_dataset_filtered_single.csv",
     )
-    DATASET_MEAN = [0.16853632, 0.17632364, 0.10495131]
-    DATASET_STD = [0.05298341, 0.05527821, 0.04611006]
+    # DATASET_MEAN = [0.16853632, 0.17632364, 0.10495131]
+    # DATASET_STD = [0.05298341, 0.05527821, 0.04611006]
+    DATASET_MEAN = [0.41822195053100586, 0.41011959314346313, 0.3475947380065918]
+    DATASET_STD = [0.3204368054866791, 0.3123301863670349, 0.339181512594223]
 elif dataset_switch == 1:
     DATASET_NAME = "dataset_full"
     DATA_CSV = os.path.join(
@@ -45,12 +49,12 @@ elif dataset_switch == 3:
 
 INITIAL_LR = 0.001
 
-BATCH_SIZE = 160 # 32 - 25% of vRAM. 160 - 95% of vRAM
+BATCH_SIZE = 32 # 32 - 25% of vRAM. 160 - 95% of vRAM
 MAX_EPOCHS = 100
 
 NUM_NODES = 1
-NUM_GPUS = torch.cuda.device_count()-1
-# NUM_GPUS = 1
+# NUM_GPUS = torch.cuda.device_count()-1
+NUM_GPUS = 1
 ACCELERATOR = "ddp"
 
 def set_seed(seed):

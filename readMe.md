@@ -1,6 +1,7 @@
 __Notes/ Changes from the original repository:__  
 - Great use case for the work of [Wang, et.al. (2017)](https://arxiv.org/pdf/1704.06904.pdf) -- as also indicated in the paper as reference #58. There are quite similar code examples on GitHub. Just check [paperswithcode](https://paperswithcode.com/paper/residual-attention-network-for-image) of Wang, et.al.  
-- An easy method to download the dataset is not provided. An updated list of the dataset programmatically and as .tsv files in [data utils](./data/utils) folder.  
+- An easy method to download the dataset is not provided. An updated list of the dataset programmatically and as .tsv files in [data utils](./data/utils) folder. 
+- Added single layer full infill csv file into the `dataset/csvs_tsvs/` due to the lack of the referenced dataset as "caxton_dataset/caxton_dataset_filtered_single.csv" and "caxton_dataset/caxton_dataset_filtered_equal.csv." However, [caxton_dataset_filtered.csv](https://www.repository.cam.ac.uk/bitstreams/54554b08-6ac5-495f-8d51-9c614d6839f7/download) exists.
 - Setup is changed to conda due to the lack of explanation in the core setup requirement (e.g., python version). Different Python versions result in conflicts.  
 - Review is added from supplementary information of Nature into the [supplementary_information](./supplementary_information/) folder.  
 __To Dos:__  
@@ -71,7 +72,7 @@ $ pip install -r requirements.txt
 </table>
 
 __Note:__ If one is using cloud, for NVidia version the default Caxton code is compatible for the following architectures 
-(mainly due to the use Cuda 11.3,11.4) `sm_37 sm_50 sm_60 sm_70 sm_75` and the following from AWS:  
+(mainly due to the use Cuda 11.3,11.4) `sm_37 sm_50 sm_60 sm_70 sm_75` and the following from [AWS](https://docs.aws.amazon.com/dlami/latest/devguide/gpu.html):  
 - Amazon EC2 P3 Instances: Up to 8 NVIDIA Tesla V100 GPUs, SM Type: sm_70 (Volta architecture)  
 - Amazon EC2 P4 Instances: Up to 8 NVIDIA Tesla A100 GPUs, SM Type: sm_80 (Ampere architecture)  
 - Amazon EC2 G3 Instances: Up to 4 NVIDIA Tesla M60 GPUs, SM Type: sm_52 (Maxwell architecture)  
