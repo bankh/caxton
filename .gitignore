@@ -133,3 +133,6 @@ dmypy.json
 # Pyre type checker
 .pyre/
 dataset/utils/extract_single_layers_fullInfill.py
+src/train_att_only.py
+models/model_92_sgd.pkl
+requirements_caxton38.txt

@@ -79,6 +79,20 @@ __Note:__ If one is using cloud, for NVidia version the default Caxton code is c
 - Amazon EC2 G4 Instances: Up to 4 NVIDIA T4 GPUs, SM Type: sm_75 (Turing architecture)  
 - Amazon EC2 G5 Instances: Up to 8 NVIDIA A10G GPUs, SM Type: sm_80 (Ampere architecture)  
 
+The following will help you to train the repo on AWS:
+1- ssh to G4 EC2 Instance:
+```
+$ ssh -i "{YOUR_KEY}" ubuntu@{EC2_IP}
+```
+2- At AWS G4 EC2 instance:
+```
+$ git clone https://github.com/bankh/caxton.git
+```
+3- Copy the dataset from the local machine (e.g., or where the dataset is):
+```
+$ scp -r ./path/to/dataset/caxton_dataset ubuntu@{EC2_IP}:/home/ubuntu/Data-AutoPrint
+```
+
 ## 🏃 Usage
 
 Inside the `src` directory are two sub-directories for our `data` and `model`. We use Pytorch-Lightning (v1.1.4) as a wrapper for both the dataset and datamodule classes and for our model.

@@ -38,7 +38,6 @@ set_seed(seed)
 
 logs_dir = "logs/logs-{}/{}/".format(DATE, seed)
 logs_dir_default = os.path.join(logs_dir, "default")
-
 # Create directories
 os.makedirs(logs_dir, exist_ok=True)
 os.makedirs(logs_dir_default, exist_ok=True)
@@ -60,9 +59,9 @@ early_stop_callback = LoggingEarlyStopping(logger=tb_logger,
                                            monitor='val_loss', 
                                            patience=100,
                                            verbose=True,
-                                           mode='max'
+                                           mode='min'
 )
-model = ParametersClassifier(num_classes=3,
+model = ParametersClassifier(num_classes=3, #classes:low,good,high|labels:flowrate,lateralspeed,Zoffset,hotendtemperature
                              lr=INITIAL_LR,
                              gpus=NUM_GPUS,
                              transfer=False,
@@ -82,7 +81,7 @@ trainer = pl.Trainer(num_nodes=NUM_NODES,
                      max_epochs=args.epochs,
                      logger=tb_logger,
                      enable_model_summary=None,
-                     precision=16,
+                     precision=32,
                      callbacks=[checkpoint_callback, early_stop_callback],
                      resume_from_checkpoint=checkpoint_path if args.checkpoint else None,  
 )

@@ -7,7 +7,7 @@ from torchvision import transforms
 
 # Set the environment variable DATA_DIR
 os.environ['DATA_DIR'] = '/mnt/data_drive/Data-AutoPrint'
-os.environ['CUDA_VISIBLE_DEVICES'] = '4'
+os.environ['CUDA_VISIBLE_DEVICES'] = '0' # Pick one or multiple from the available list of GPU(s) for training '0,1,2,3,4,5,6'
 
 DATE = datetime.now().strftime("%d%m%Y")
 dataset_switch = 0
@@ -49,7 +49,7 @@ elif dataset_switch == 3:
 
 INITIAL_LR = 0.001
 
-BATCH_SIZE = 32 # 32 - 25% of vRAM. 160 - 95% of vRAM
+BATCH_SIZE = 32 # 32 - 25% of vRAM. 160 - 95% of vRAM for MI 16GB in 16 bits of precision
 MAX_EPOCHS = 100
 
 NUM_NODES = 1
