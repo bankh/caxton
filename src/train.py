@@ -81,7 +81,7 @@ trainer = pl.Trainer(num_nodes=NUM_NODES,
                      max_epochs=args.epochs,
                      logger=tb_logger,
                      enable_model_summary=None,
-                     precision=32,
+                     precision=16,
                      callbacks=[checkpoint_callback, early_stop_callback],
                      resume_from_checkpoint=checkpoint_path if args.checkpoint else None,  
 )
