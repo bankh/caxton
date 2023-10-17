@@ -52,7 +52,7 @@ $ bash Miniconda3-latest-Linux-x86_64.sh
 
 - Create and activate the virtual environment.  
 ```
-$ conda create --name caxton python=3.6 -y
+$ conda create --name caxton -y
 $ conda activate caxton
 ```
 
