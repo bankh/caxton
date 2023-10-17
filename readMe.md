@@ -52,7 +52,7 @@ $ bash Miniconda3-latest-Linux-x86_64.sh
 
 - Create and activate the virtual environment.  
 ```
-$ conda create --name caxton -y
+$ conda create --name caxton python={Version} -y #{Version}: Depending on the system AWS, Colab, etc. 3.8/ AMD ROCm the system above 3.6
 $ conda activate caxton
 ```
 
