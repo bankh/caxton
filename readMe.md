@@ -79,7 +79,7 @@ __Note:__ If one is using cloud, for NVidia version the default Caxton code is c
 - Amazon EC2 G4 Instances: Up to 4 NVIDIA T4 GPUs, SM Type: sm_75 (Turing architecture)  
 - Amazon EC2 G5 Instances: Up to 8 NVIDIA A10G GPUs, SM Type: sm_80 (Ampere architecture)  
 
-The following will help you to train the repo on AWS:
+The following will help you to train the repo on AWS:  
 1- ssh to G4 EC2 Instance:
 ```
 $ ssh -i "{YOUR_KEY}" ubuntu@{EC2_IP}
