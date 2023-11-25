@@ -84,6 +84,7 @@ caxton_dataset/print0/image-2.jpg,2020-10-08T13:12:48-48,100,100,0.0,205.0,204.3
 caxton_dataset/print0/image-3.jpg,2020-10-08T13:12:48-94,100,100,0.0,205.0,204.13,65.74,531,554,0
 ...
 ```
+![image](https://github.com/bankh/caxton/assets/9688867/c21f8d24-0bc3-43a1-aafb-222f9aee9453)
 
 ### Further information
 
