@@ -85,7 +85,7 @@ caxton_dataset/print0/image-3.jpg,2020-10-08T13:12:48-94,100,100,0.0,205.0,204.1
 ...
 ```
 ![image](https://github.com/bankh/caxton/assets/9688867/c21f8d24-0bc3-43a1-aafb-222f9aee9453)
-
+Here, the plot shows the label count of `caxton_dataset_final.csv` by using [label_repetition_count.py](./utils/label_repetition_count.py)
 ### Further information
 
 Each image in the data set is full RGB and 1280x720 pixels in resolution. For intial parameter prediction work the image was cropped to a 320x320 square region centered on the provided nozzle tip coordinates for each images. This region was then resized to 224x224 for inference in the developed deep learning model. The images are all taken with the same model of camera; however, can vary considerably depending on lightning conditions and the lateral speed of the print head during capturing.
