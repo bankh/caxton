@@ -14,7 +14,7 @@ parser = argparse.ArgumentParser()
 parser.add_argument(
     "-s", 
     "--seed", 
-    default=12, 
+    default=1234, 
     type=int, 
     help="Set seed for training"
 )
@@ -30,7 +30,7 @@ parser.add_argument(
     "--checkpoint",
     default=False,
     type=bool,
-    help="On/ off the checkpoint and make sure to enter ckpt_filename inside the code",
+    help="On (True)/ Off (False) the checkpoint and make sure to enter ckpt_filename inside the code",
 )
 args = parser.parse_args()
 seed = args.seed
@@ -38,6 +38,7 @@ set_seed(seed)
 
 logs_dir = "logs/logs-{}/{}/".format(DATE, seed)
 logs_dir_default = os.path.join(logs_dir, "default")
+
 # Create directories
 os.makedirs(logs_dir, exist_ok=True)
 os.makedirs(logs_dir_default, exist_ok=True)
@@ -45,26 +46,28 @@ os.makedirs(logs_dir_default, exist_ok=True)
 tb_logger = pl_loggers.TensorBoardLogger(save_dir=logs_dir, name='lightning_logs')
 dirpath = "checkpoints/{}/{}/".format(DATE, seed)
 filename = "MHResAttNet-{}-{}-".format(DATASET_NAME, DATE) + "{epoch:02d}-{val_loss:.2f}-{val_acc:.2f}"
-ckpt_filename = ("/mnt/data_drive/AutoPrint/software/caxton/checkpoints/03102023/1234/"
-                 "MHResAttNet-dataset_full-03102023-epoch=18-val_loss=4.10-val_acc=0.48.ckpt")
+ckpt_filename = ("/mnt/data_drive/AutoPrint/software/caxton/src/checkpoints/25112023/1234/"
+                 "MHResAttNet-dataset_single_layer-25112023-epoch=95-val_loss=0.47-val_acc=0.96.ckpt")
 checkpoint_path = os.path.join(dirpath, ckpt_filename)
-checkpoint_callback = ModelCheckpoint(
-    monitor="val_loss",
-    dirpath=dirpath,
-    filename=filename,
-    save_top_k=3,
-    mode="max",
+checkpoint_callback = ModelCheckpoint(monitor="val_loss",
+                                      dirpath=dirpath,
+                                      filename=filename,
+                                      save_top_k=3,
+                                      mode="min",
+                                      #  period=20, # Save every 20 epochs
+                                      save_last=True # Always save the latest model
 )
 early_stop_callback = LoggingEarlyStopping(logger=tb_logger,
                                            monitor='val_loss', 
-                                           patience=100,
+                                           patience=20,
                                            verbose=True,
                                            mode='min'
 )
-model = ParametersClassifier(num_classes=3, #classes:low,good,high|labels:flowrate,lateralspeed,Zoffset,hotendtemperature
+model = ParametersClassifier(num_classes=3,
                              lr=INITIAL_LR,
                              gpus=NUM_GPUS,
-                             transfer=False,
+                             transfer=TRANSFER, #Enable and disable transfer learning
+                             checkpoint_path=checkpoint_path if args.checkpoint else None,
 )
 data = ParametersDataModule(batch_size=BATCH_SIZE,
                             data_dir=DATA_DIR,
@@ -83,6 +86,6 @@ trainer = pl.Trainer(num_nodes=NUM_NODES,
                      enable_model_summary=None,
                      precision=16,
                      callbacks=[checkpoint_callback, early_stop_callback],
-                     resume_from_checkpoint=checkpoint_path if args.checkpoint else None,  
+                     resume_from_checkpoint=checkpoint_path if args.checkpoint and TRANSFER==False else None, # deprecation warnning in v1.5 
 )
 trainer.fit(model, data)
