@@ -1,6 +1,6 @@
 ### Notes/ Tools for Dataset
 
-- Some of the images are corrupt --not sure about the reasoning whether they were corrupt to begin with or downloading issue. Please make sure that you process them with the [compute_mean_std_csv.py](./utils/compute_mean_std_csv.py).
+- Some of the images are corrupt --not sure about the reasoning whether they were corrupt to begin with or downloading issue. Please make sure that you process them with the [compute_mean_std_csv.py](./utils/compute_mean_std_csv.py).  
   **Added Note:** CV2 and PIL result in the corrupt file error. However, Wand works without throwing any exceptions.
 - There is a list of archive files and corresponding links in [caxton_dataset_links_files.tsv](./csvs_tsvs/caxton_dataset_links_files.tsv)
 - There is also a file ([dataset_get.sh](./utils/dataset_get.sh)) in the utils that programmatically downloads all the image archives.  
