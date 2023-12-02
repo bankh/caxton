@@ -63,7 +63,9 @@ $ conda activate caxton
 $ pip install -r requirements.txt
 ```
 
-- Training proceeds smoothly with 6 GPUs. However, utilizing a 7th GPU could potentially trip a 20A breaker. If everything operates as expected, the following output will appear on the terminal:  
+- Training proceeds smoothly with 6 GPUs and utilizing a 7th GPU could potentially trip a 20A breaker. To circumvent that issue you can reduce the total power consumption by using
+  AMDvbFlash from [GPUCompute](https://github.com/bankh/GPU_Compute/tree/main/AMD/AMDvbFlashROMs-MI25) repository.  
+  If everything operates as expected, the following output will appear on the terminal:  
  
 <table style="width:100%;">
     <tr>
