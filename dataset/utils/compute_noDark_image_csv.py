@@ -31,9 +31,10 @@ def filter_dark_images(csv_file, output_file, threshold=10):
 
 # File paths
 #csv_file = 'path_to_your_csv_file.csv'  # replace with your CSV file path
+threshold = 10 # Change to test different brightness
 csv_file = '/caxton_dataset/caxton_dataset_filtered_no_outliers_img_info.csv'
-output_file = '/caxton_dataset_filtered_no_outliers_img_info_NoDark.csv'
+output_file = f'/mnt/data_drive/Data-AutoPrint/caxton_dataset/caxton_dataset_filtered_no_outliers_img_info_NoDark_{threshold}.csv'
 
 # Call the function
-filter_dark_images(csv_file, output_file)
+filter_dark_images(csv_file, output_file, threshold=10):
 print(f"Filtered CSV file saved as: {output_file}")
