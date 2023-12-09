@@ -108,6 +108,11 @@ To train the network use the following line:
 python src/train.py
 ```
 
+Alternatively, it is better to log the terminal output while being able to read those on the terminal screen. In addition to the Tensorboard logging, this will ease to read the response of the terminal.  
+```
+$ python train.py 2>&1 | tee -a ../saved/logs/execution.log # or an alternative path/file.log 
+```
+
 The command line arguments `-e` for the number of epochs and `-s` for the seed can be easily added to the above command.
 
 After training the network is able to simultaneously predict the classification of the four parameters from a single input image with an average accuracy of 84.3%.
