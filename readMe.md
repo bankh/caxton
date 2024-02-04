@@ -6,8 +6,8 @@ __Notes/ Changes from the original repository:__
 - Implementation of the transfer learning wasn't complete. The original code has been freezing the appropriate layers in [`network_module.py`](https://github.com/cam-cambridge/caxton/blob/c4934171fb5436c0967d90aecc02ae49466ad6d4/src/model/network_module.py#L39C1-L39C9) without loading the pre-trained model (from the desired state --e.g., step 1). Changes made on `train_config.py`, `train.py`, and `network_module.py` for loading the pre-trained model (e.g., from target checkpoint) under the condition of the TRANSFER=True. This approach will separate `resume_from_checkpoint` logic from `transfer_learning` logic.
 - Review is added from supplementary information of Nature into the [supplementary_information](./supplementary_information/) folder.  
 __To Dos:__  
-[x] Check the algorithmic logic of correction (classification to process parameters). It seems to be an on/off-like approach (linearly mapped between threshold limits) and this approach will require additional tuning due to potential oscillations as pointed out in 'Online correction and parameter discovery pipeline' and Fig. 3-b as well.  
-[x] Benchmarks with others. 😉  
+- [x] Check the algorithmic logic of correction (classification to process parameters). It seems to be an on/off-like approach (linearly mapped between threshold limits) and this approach will require additional tuning due to potential oscillations as pointed out in 'Online correction and parameter discovery pipeline' and Fig. 3-b as well.  
+- [x] Benchmarks with others. 😉  
 
 # CAXTON: The Collaborative Autonomous Extrusion Network
 
